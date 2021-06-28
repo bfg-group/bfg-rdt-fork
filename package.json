@@ -4,10 +4,7 @@
   "description": "bfg-rdt-fork",
   "main": "lib/index.js",
   "files": [
-    "css",
-    "es",
-    "lib",
-    "umd"
+    "lib"
   ],
   "scripts": {
     "build": "nwb build-react-component",
