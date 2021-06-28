@@ -1,7 +1,7 @@
 {
   "name": "bfg-rdt-fork",
   "version": "1.0.0",
-  "description": "bfg-rdt-fork React component",
+  "description": "bfg-rdt-fork",
   "main": "lib/index.js",
   "files": [
     "css",
@@ -13,24 +13,29 @@
     "build": "nwb build-react-component",
     "clean": "nwb clean-module && nwb clean-demo",
     "prepublishOnly": "npm run build",
-    "start": "nwb serve-react-demo",
-    "test": "nwb test-react",
-    "test:coverage": "nwb test-react --coverage",
-    "test:watch": "nwb test-react --server"
+    "start": "nwb serve-react-demo"
   },
-  "dependencies": {},
+  "dependencies": {
+    "prop-types": "^15.7.2",
+    "react-onclickoutside": "^6.9.0"
+  },
   "peerDependencies": {
-    "react": "16.x"
+    "react": "16.12.0",
+    "moment": "2.24.0"
   },
   "devDependencies": {
     "nwb": "0.25.x",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2"
+    "react": "16.12.0",
+    "react-dom": "16.12.0",
+    "moment": "2.24.0"
   },
-  "author": "",
-  "homepage": "",
+  "author": "BFG",
   "license": "MIT",
-  "repository": "",
+  "homepage": "https://github.com/bfg-group/bfg-rdt-fork",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bfg-group/bfg-rdt-fork"
+  },
   "keywords": [
     "react-component"
   ]

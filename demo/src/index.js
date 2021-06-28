@@ -1,13 +1,13 @@
 import React, {Component} from 'react'
 import {render} from 'react-dom'
 
-import Example from '../../src'
+import DateTime from '../../src'
 
 export default class Demo extends Component {
   render() {
     return <div>
       <h1>bfg-rdt-fork Demo</h1>
-      <Example/>
+      <DateTime />
     </div>
   }
 }
