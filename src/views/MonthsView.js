@@ -24,11 +24,10 @@ export default class MonthsView extends React.Component {
 
     return (
 			<ViewNavigation
-    onClickPrev={() => this.props.navigate( -1, 'years' )}
-    onClickSwitch={() => this.props.showView( 'years' )}
-    onClickNext={() => this.props.navigate( 1, 'years' )}
-    switchContent={year}
-    switchColSpan="2"
+        onClickPrev={() => this.props.navigate( -1, 'years' )}
+        onClickSwitch={() => this.props.showView( 'years' )}
+        onClickNext={() => this.props.navigate( 1, 'years' )}
+        switchContent={year}
 			/>
     );
   }

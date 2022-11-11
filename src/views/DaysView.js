@@ -29,12 +29,12 @@ export default class DaysView extends React.Component {
     const locale = date.localeData();
     return (
 			<ViewNavigation
-    onClickPrev={() => this.props.navigate( -1, 'months' )}
-    onClickSwitch={() => this.props.showView( 'months' )}
-    onClickNext={() => this.props.navigate( 1, 'months' )}
-    switchContent={locale.months( date ) + ' ' + date.year()}
-    switchColSpan={5}
-    switchProps={{ 'data-value': this.props.viewDate.month() }}
+        onClickPrev={() => this.props.navigate( -1, 'months' )}
+        onClickSwitch={() => this.props.showView( 'months' )}
+        onClickNext={() => this.props.navigate( 1, 'months' )}
+        switchContent={locale.months( date ) + ' ' + date.year()}
+        colspan={7}
+        switchProps={{ 'data-value': this.props.viewDate.month() }}
 			/>
     );
   }

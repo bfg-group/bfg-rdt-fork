@@ -94,13 +94,28 @@
     border-bottom: none;
     cursor: default;
 }
-.rdtPicker th.rdtSwitch {
-    width: 100px;
+.rdtPicker .rdtNext,
+.rdtPicker .rdtPrev,
+.rdtPicker .rdtSwitch {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
-.rdtPicker th.rdtNext,
-.rdtPicker th.rdtPrev {
+
+.rdtPicker .rdtSwitch {
+    flex: 1 0 auto;
+}
+
+.rdtViewNavigation {
+    display: flex;
+    align-items: stretch;
+    font-weight: bold;
+}
+
+.rdtPicker .rdtNext,
+.rdtPicker .rdtPrev {
     font-size: 21px;
-    vertical-align: top;
+    width: 40px;
 }
 
 .rdtPrev span,
@@ -123,6 +138,8 @@
 .rdtPicker thead tr:first-of-type th {
     cursor: pointer;
 }
+
+.rdtViewNavigation div:hover,
 .rdtPicker thead tr:first-of-type th:hover {
     background: #eeeeee;
 }

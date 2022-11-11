@@ -27,10 +27,10 @@ export default class YearsView extends React.Component {
     const viewYear = this.getViewYear();
     return (
 			<ViewNavigation
-    onClickPrev={() => this.props.navigate( -10, 'years' )}
-    onClickSwitch={() => this.props.showView( 'years' )}
-    onClickNext={() => this.props.navigate( 10, 'years' )}
-    switchContent={`${viewYear}-${viewYear + 9}`}
+        onClickPrev={() => this.props.navigate( -10, 'years' )}
+        onClickSwitch={() => this.props.showView( 'years' )}
+        onClickNext={() => this.props.navigate( 10, 'years' )}
+        switchContent={`${viewYear}-${viewYear + 9}`}
 			/>
     );
   }
