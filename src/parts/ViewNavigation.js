@@ -3,7 +3,7 @@ import React from 'react';
 export default function ViewNavigation( { onClickPrev, onClickSwitch, onClickNext, colspan = 4, switchContent, switchProps } ) {
   return (
 		<tr>
-			<td colSpan="7">
+			<td colSpan={colspan}>
 				<div className="rdtViewNavigation">
 					<div className="rdtPrev" onClick={onClickPrev}>
 						<span>‹</span>
