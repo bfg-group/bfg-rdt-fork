@@ -1,17 +1,21 @@
 import React from 'react';
 
-export default function ViewNavigation( { onClickPrev, onClickSwitch, onClickNext, switchContent, switchColSpan, switchProps } ) {
+export default function ViewNavigation( { onClickPrev, onClickSwitch, onClickNext, colspan = 4, switchContent, switchProps } ) {
   return (
 		<tr>
-			<th className="rdtPrev" onClick={onClickPrev}>
-				<span>‹</span>
-			</th>
-			<th className="rdtSwitch" colSpan={switchColSpan} onClick={onClickSwitch} {...switchProps}>
-				{ switchContent }
-			</th>
-			<th className="rdtNext" onClick={onClickNext}>
-				<span>›</span>
-			</th>
+			<td colSpan={colspan}>
+				<div className="rdtViewNavigation">
+					<div className="rdtPrev" onClick={onClickPrev}>
+						<span>‹</span>
+					</div>
+					<div className="rdtSwitch" onClick={onClickSwitch} {...switchProps}>
+						{ switchContent }
+					</div>
+					<div className="rdtNext" onClick={onClickNext}>
+						<span>›</span>
+					</div>
+				</div>
+			</td>
 		</tr>
   );
 }
