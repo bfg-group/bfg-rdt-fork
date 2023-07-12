@@ -39,7 +39,7 @@ export default class TimeView extends React.Component {
 
     this.constraints = createConstraints( props.timeConstraints );
 
-		// This component buffers the time part values in the state 
+		// This component buffers the time part values in the state
 		// while the user is pressing down the buttons
 		// and call the prop `setTime` when the buttons are released
     this.state = this.getTimeParts( props.selectedDate || props.viewDate );
@@ -48,7 +48,7 @@ export default class TimeView extends React.Component {
   render() {
     let items = [];
     const timeParts = this.state;
-		
+
     this.getCounters().forEach( (c, i) => {
       if ( i && c !== 'ampm' ) {
         items.push(
@@ -84,6 +84,8 @@ export default class TimeView extends React.Component {
       if ( value === 0 ) {
         value = 12;
       }
+
+      value = pad(type, value, this.props.pad);
     }
 
     if ( type === 'ampm' ) {
@@ -124,7 +126,7 @@ export default class TimeView extends React.Component {
 			// Only left clicks, thanks
       return;
     }
-		
+
     if ( type === 'ampm' ) return this.toggleDayPart();
 
     let update = {};
@@ -153,7 +155,7 @@ export default class TimeView extends React.Component {
 
   toggleDayPart() {
     let hours = parseInt( this.state.hours, 10 );
-		
+
     if ( hours >= 12 ) {
       hours -= 12;
     } else {
@@ -168,7 +170,7 @@ export default class TimeView extends React.Component {
     let value = parseInt( this.state[ type ], 10) + tc.step;
     if ( value > tc.max )
       value = tc.min + ( value - ( tc.max + 1 ) );
-    return pad( type, value );
+    return pad( type, value, this.props.pad );
   }
 
   decrease( type ) {
@@ -176,13 +178,13 @@ export default class TimeView extends React.Component {
     let value = parseInt( this.state[ type ], 10) - tc.step;
     if ( value < tc.min )
       value = tc.max + 1 - ( tc.min - value );
-    return pad( type, value );
+    return pad( type, value, this.props.pad );
   }
 
   getCounters() {
     let counters = [];
     let format = this.props.timeFormat;
-		
+
     if ( format.toLowerCase().indexOf('h') !== -1 ) {
       counters.push('hours');
       if ( format.indexOf('m') !== -1 ) {
@@ -209,12 +211,13 @@ export default class TimeView extends React.Component {
 
   getTimeParts( date ) {
     const hours = date.hours();
+    const customPad = this.props.pad;
 
     return {
-      hours: pad( 'hours', hours ),
-      minutes: pad( 'minutes', date.minutes() ),
-      seconds: pad( 'seconds', date.seconds() ),
-      milliseconds: pad('milliseconds', date.milliseconds() ),
+      hours: pad( 'hours', hours, customPad ),
+      minutes: pad( 'minutes', date.minutes(), customPad ),
+      seconds: pad( 'seconds', date.seconds(), customPad ),
+      milliseconds: pad('milliseconds', date.milliseconds(), customPad ),
       ampm: hours < 12 ? 'am' : 'pm',
     };
   }
@@ -230,16 +233,24 @@ export default class TimeView extends React.Component {
   }
 }
 
-function pad( type, value ) {
+function pad( type, value, customPad ) {
+  const {
+    hours: customHours,
+    minutes: customMinutes,
+    seconds: customSeconds,
+    milliseconds: customMilliseconds,
+  } = customPad || {};
+
   const padValues = {
-    hours: 1,
-    minutes: 2,
-    seconds: 2,
-    milliseconds: 3,
+    hours: customHours || 1,
+    minutes: customMinutes || 2,
+    seconds: customSeconds || 2,
+    milliseconds: customMilliseconds || 3,
   };
 
   let str = value + '';
   while ( str.length < padValues[ type ] )
     str = '0' + str;
+
   return str;
 }

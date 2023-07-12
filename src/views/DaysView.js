@@ -115,17 +115,28 @@ export default class DaysView extends React.Component {
   }
 
   renderFooter() {
-    if ( !this.props.timeFormat ) return;
+    const {
+      timeFormatter,
+      timeFormat,
+      viewDate,
+      showView,
+    } = this.props;
 
-    const date = this.props.viewDate;
+    if (!timeFormatter && !timeFormat) {
+      return;
+    }
+
+    const formattedDate = timeFormatter ? timeFormatter(viewDate) : viewDate.format(timeFormat);
+
     return (
 			<tfoot>
 				<tr>
-					<td onClick={() => this.props.showView('time')}
-    colSpan={7}
-    className="rdtTimeToggle"
+					<td
+            onClick={() => showView('time')}
+            colSpan={7}
+            className="rdtTimeToggle"
 					>
-						{ date.format( this.props.timeFormat ) }
+						{formattedDate}
 					</td>
 				</tr>
 			</tfoot>
