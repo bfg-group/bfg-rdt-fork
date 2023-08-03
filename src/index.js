@@ -544,6 +544,13 @@ export default class Index extends React.Component {
       viewDate = this.localMoment( date );
     }
 
+    /**
+     * В оригинальной библиотеке тут был `return logError()`, но не совсем ясно зачем.
+     *
+     * Вероятно по задумке, в setViewDate не должно приходить значение при ручном вводе, но при этом единственный вызов
+     * функции происходит в componentDidUpdate, который происходит на любое изменение value, который как раз меняется
+     * при ручном вводе. Т.о. value часто невалдно и вызывается это логирование.
+     */
     if ( !viewDate || !viewDate.isValid() ) return;
     this.setState({ viewDate: viewDate });
   }
